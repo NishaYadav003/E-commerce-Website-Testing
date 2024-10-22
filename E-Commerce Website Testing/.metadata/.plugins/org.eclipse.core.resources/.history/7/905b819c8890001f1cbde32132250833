@@ -1,0 +1,70 @@
+package e_ommerece;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class login_register {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		String country = "IN";
+
+		WebDriver driver = new EdgeDriver();
+
+		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+
+		driver.findElement(By.id("autosuggest")).sendKeys(country);
+		Thread.sleep(2000);
+		List<WebElement> countries = driver.findElements(By.cssSelector(".ui-corner-all"));
+
+		for (WebElement countrys : countries) {
+
+			if (countrys.getText().equalsIgnoreCase("India")) {
+
+				countrys.click();
+				break;
+
+			}
+
+		}
+		
+		driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+		List <WebElement> tour= driver.findElements(By.id("glsctl00_mainContent_ddl_originStation1_CTNR"));
+		Thread.sleep(2000);
+	for(WebElement tours:tour) {
+		
+		String departure= tours.getText().split(" ")[0].trim();
+		
+		if(departure.contains("Goa")) {
+			
+			tours.click();
+			break;
+		}
+		
+	}
+	Thread.sleep(2000);
+	List <WebElement> arrival= driver.findElements(By.id("glsctl00_mainContent_ddl_destinationStation1_CTNR"));
+	
+for(WebElement arrivals:arrival) {
+	
+	if(arrivals.getText().contains("BOM")) {
+		
+		arrivals.click();
+		break;
+	}
+	
+}
+
+
+	
+	
+	}
+
+}

@@ -1,0 +1,14 @@
+package e_ommerece;
+
+org.openqa.selenium
+
+public class E_Commerce_Website {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		WebDriver driver = new EdgeDriver();
+
+	}
+
+}
